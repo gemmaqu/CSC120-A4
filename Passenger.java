@@ -1,4 +1,6 @@
-public class Passenger {
+
+
+public class Passenger implements PassengerRequirements{
     
     //attribute
     private String name;
@@ -13,7 +15,28 @@ public class Passenger {
     }
 
     public void boardCar(Car c){
-        if (c.addPassenger(p) == Boolean.TRUE) {
-            c.addPassenger(p);
+        if (c.addPassenger(this) == Boolean.TRUE) {
+            System.out.println("I am on the car");
         }
-    else 
+    else {
+        System.out.println("I don't want to get on the car");
+    }
+    }
+
+    public void getOffCar(Car c){
+        if( c.removePassenger(this) == Boolean.TRUE){
+            System.out.println("I want to get off the car");
+        }
+        else{
+            System.out.println("I am not on the car");
+        }
+    
+    }
+
+
+    public static void main(String[] args) {
+        Passenger onePassenger = new Passenger("Anna");
+        Car busCar = new Car(100);
+        onePassenger.boardCar(busCar);
+    }
+}

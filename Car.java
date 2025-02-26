@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+// import Passenger;
 
-public class Car {
+public class Car implements CarRequirements{
 
     
 
@@ -25,22 +26,26 @@ public class Car {
         return this.Capacity - this.Currentpassengers;
     }
 
-    public boolean addPassenger(Passenger p){
+    public Boolean addPassenger(Passenger p){
         if (seatsRemaining() > 0){
             this.Currentpassengers += 1;
             this.Passengeronboard.add(p);
-            return true;    
+            return Boolean.TRUE;    
         }
-        return false;
+        else{
+            return Boolean.FALSE;
+        }
     }
 
-    public boolean removePassenger(Passenger p){
+    public Boolean removePassenger(Passenger p){
         if (this.Passengeronboard.contains(p)){
             this.Currentpassengers -= 1;
             this.Passengeronboard.remove(p);
-            return true;
+            return Boolean.TRUE;
         }
-        return false;
+        else{
+            return Boolean.FALSE;
+        }
     }
 
     public void printManifest(){
@@ -57,9 +62,10 @@ public class Car {
 
     public static void main(String[] args) {
         Car mycar = new Car(100);
+        Passenger onePassenger = new Passenger("Anna");
+        mycar.addPassenger(onePassenger);
         mycar.printManifest();
-        mycar.seatsRemaining();
-        mycar.addPassenger(p);
+
     }
 
 
