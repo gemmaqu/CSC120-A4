@@ -15,7 +15,7 @@ public class Passenger implements PassengerRequirements{
     }
 
     public void boardCar(Car c){
-        if (c.addPassenger(this) == Boolean.TRUE) {
+        if (c.addPassenger(this)) {
             System.out.println("I am on the car");
         }
     else {
@@ -24,7 +24,7 @@ public class Passenger implements PassengerRequirements{
     }
 
     public void getOffCar(Car c){
-        if( c.removePassenger(this) == Boolean.TRUE){
+        if( c.removePassenger(this)){
             System.out.println("I want to get off the car");
         }
         else{
@@ -38,5 +38,7 @@ public class Passenger implements PassengerRequirements{
         Passenger onePassenger = new Passenger("Anna");
         Car busCar = new Car(100);
         onePassenger.boardCar(busCar);
+        onePassenger.getOffCar(busCar);
+        onePassenger.getOffCar(busCar);
     }
 }

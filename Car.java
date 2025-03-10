@@ -1,3 +1,4 @@
+import java.security.AlgorithmParametersSpi;
 import java.util.ArrayList;
 // import Passenger;
 
@@ -61,9 +62,10 @@ public class Car implements CarRequirements{
     }
 
     public static void main(String[] args) {
-        Car mycar = new Car(100);
+        Car mycar = new Car(1);
         Passenger onePassenger = new Passenger("Anna");
-        mycar.addPassenger(onePassenger);
+        Passenger bob = new Passenger("bob");
+        mycar.removePassenger(onePassenger);
         mycar.printManifest();
 
     }

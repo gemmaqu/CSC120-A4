@@ -16,6 +16,7 @@ public class Train implements TrainRequirements{
         for (int i = 0; i < nCars; i++){
             this.cars.add(new Car(passengerCapacity));
         }
+    }
 
     @Override
     public Engine getEngine() {
@@ -26,8 +27,9 @@ public class Train implements TrainRequirements{
     public Car getCar(int i) {
         if (i >= 0 && i < cars.size()) {
             return cars.get(i);
+        }else{
+            return null;
         }
-        throw new IndexOutOfBoundsException("Invalid car index");
     }
 
     @Override
@@ -43,7 +45,7 @@ public class Train implements TrainRequirements{
     public int seatsRemaining() {
         int remainingSeats = 0;
         for (Car car : cars) {
-            remainingSeats += car.seatsAvailable();
+            remainingSeats += car.seatsRemaining();
         }
         return remainingSeats;
     }
@@ -52,8 +54,23 @@ public class Train implements TrainRequirements{
     public void printManifest() {
         for (int i = 0; i < cars.size(); i++) {
             System.out.println("Car " + i + " Manifest:");
-            cars.get(i).printPassengerList();
+            cars.get(i).printManifest();
         }
+    }
+
+    public static void main(String[] args) {
+        
+        Passenger onePassenger = new Passenger("Anna");
+        Passenger bob = new Passenger("bob");
+        
+        // anothercar.addPassenger(onePassenger);
+        // anothercar.addPassenger(bob);
+        Train mytrain = new Train(FuelType.ELECTRIC, 100, 10, 50, 30);
+        mytrain.getEngine();
+        mytrain.cars.get(2).addPassenger(bob);
+        mytrain.cars.get(2).addPassenger(onePassenger);
+        mytrain.printManifest();
+
     }
     
 }
