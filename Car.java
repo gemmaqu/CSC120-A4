@@ -2,35 +2,53 @@ import java.security.AlgorithmParametersSpi;
 import java.util.ArrayList;
 // import Passenger;
 
+
+//Please look at my reflection. Thank you!
 public class Car implements CarRequirements{
 
     
 
     //Attributes
-    private int Capacity;
-    private ArrayList<Passenger> Passengeronboard;
-    private int Currentpassengers;
+    private int capacity;//lowercase all the variables
+    private ArrayList<Passenger> passengeronboard;//lowercase
+    private int currentpassengers;//lowercase
 
     //constructor
+    /**
+     * constructor for Car class
+     * @param Capacity
+     */
     public Car(int Capacity){
-        this.Capacity = Capacity;
-        this.Passengeronboard = new ArrayList<Passenger>(Capacity);
-        this.Currentpassengers = 0;
+        this.capacity = Capacity;
+        this.passengeronboard = new ArrayList<Passenger>(Capacity);
+        this.currentpassengers = 0;
     }
         
-        
+    /**
+     * @return capacity of car as an integer
+     * get the capacity of the car
+     */
     public int getCapacity(){
-        return this.Capacity;
+        return this.capacity;
     }
 
+    /**
+     * @return remaining seats in the car as an integer
+     * get the number of reamaning seats in the cas
+     */
     public int seatsRemaining(){
-        return this.Capacity - this.Currentpassengers;
+        return this.capacity - this.currentpassengers;
     }
 
+
+    /**
+     * @param p the passenger you want to add to the car
+     * @return Boolean True if the passenger is added on the car , Boolean False if no seats remaning.
+     */
     public Boolean addPassenger(Passenger p){
         if (seatsRemaining() > 0){
-            this.Currentpassengers += 1;
-            this.Passengeronboard.add(p);
+            this.currentpassengers += 1;
+            this.passengeronboard.add(p);
             return Boolean.TRUE;    
         }
         else{
@@ -38,10 +56,14 @@ public class Car implements CarRequirements{
         }
     }
 
+    /**
+     * @param p the passenger you want to remove from the car
+     * @return Boolean True if the passenger is removed from the car , Boolean False if no seats remaning.
+     */
     public Boolean removePassenger(Passenger p){
-        if (this.Passengeronboard.contains(p)){
-            this.Currentpassengers -= 1;
-            this.Passengeronboard.remove(p);
+        if (this.passengeronboard.contains(p)){
+            this.currentpassengers -= 1;
+            this.passengeronboard.remove(p);
             return Boolean.TRUE;
         }
         else{
@@ -49,18 +71,24 @@ public class Car implements CarRequirements{
         }
     }
 
+    /**
+     * Prints the manifest of passengers currently on board.
+     * If there are no passengers, prints a message indicating the car is empty.
+     * Otherwise, prints the name of each passenger in the order they were added.
+     */
     public void printManifest(){
-        if (this.Currentpassengers == 0){
+        if (this.currentpassengers == 0){
             System.out.println("This car is EMPTY.");
         }
-        for(int i=0;i<this.Passengeronboard.size();i++){
+        for(int i=0;i<this.passengeronboard.size();i++){
             
-            System.out.println(this.Passengeronboard.get(i).getname());
+            System.out.println(this.passengeronboard.get(i).getname());
             
         }
 
     }
 
+    //compile the class
     public static void main(String[] args) {
         Car mycar = new Car(1);
         Passenger onePassenger = new Passenger("Anna");

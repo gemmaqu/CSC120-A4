@@ -19,24 +19,45 @@ public class Engine implements EngineRequirements {
 
     }
 
+    /**
+     * @return the fuel type of the engine
+     */
     public FuelType getFuelType(){
         return this.f;
     }
 
+
+    /**
+     * @return get the max level of fuel of the engine
+     */
     public double getMaxFuel(){
         return this.maxfuellevel;
     }
 
+   /**
+    * @return get the current level of fuel of the engine
+    */
     public double getCurrentFuel(){
         return this.currentfuellevel;
 
     }
 
+    /**
+     * Refills the fuel tank to maximum capacity.
+     * Sets the current fuel level equal to the maximum fuel level.
+     */
     public void refuel(){
        this.currentfuellevel = this.maxfuellevel;
       
     }
+
     // above 0 return true, otherwise false, decreasing
+    /**
+     * Attempts to move the vehicle, consuming fuel in the process.
+     * 
+     * @return true if the vehicle successfully moves (fuel was available),
+     *          false if the vehicle cannot move (no fuel available)
+     */
     public Boolean go(){
         if (this.currentfuellevel > 0 ){
             this.currentfuellevel -= 2;
@@ -47,6 +68,12 @@ public class Engine implements EngineRequirements {
         }
     }
 
+
+    /**
+     * Returns a string representation of this engine.
+     * @return a string containing the fuel type, current fuel level, 
+     *         and maximum fuel level of this engine
+     */
     public String toString(){
         return "Engine has fuel type: "+this.f+", current fuel level:"+this.currentfuellevel+ ", max fuel level: "+this.maxfuellevel;
     }

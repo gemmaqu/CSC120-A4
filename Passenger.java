@@ -6,14 +6,29 @@ public class Passenger implements PassengerRequirements{
     private String name;
 
     //constructor
+    /**
+     * costructor for Passenger class
+     * @param name
+     */
     public Passenger(String name) {
         this.name = name;
     }
 
+    /**
+     * 
+     * @return name of the passenger
+     * get the name the passenger
+     */
     public String getname(){
         return this.name;
     }
 
+    /**
+     * Attempts to board a car as a passenger.
+     * Prints a message indicating success or failure.
+     *
+     * @param c the Car that this passenger is attempting to board
+     */
     public void boardCar(Car c){
         if (c.addPassenger(this)) {
             System.out.println("I am on the car");
@@ -23,6 +38,13 @@ public class Passenger implements PassengerRequirements{
     }
     }
 
+
+    /**
+     * Attempts to disembark from a car.
+     * Prints a message indicating success or failure.
+     *
+     * @param c the Car that this passenger is attempting to exit
+     */
     public void getOffCar(Car c){
         if( c.removePassenger(this)){
             System.out.println("I want to get off the car");
